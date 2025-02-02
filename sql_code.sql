@@ -1,12 +1,15 @@
 
-select * from df_orders
+
 --1.find top 10 highest reveue generating products 
+
 select top 10  product_id, sum(sale_price) as total_sale
 from df_orders
 group by product_id
 order by total_sale desc
+ 
 
 --2.find top 5 highest selling products in each region
+ 
 with reg_prod_sales as(
 select region, product_id, sum(sale_price) as total_sales
 from df_orders
@@ -18,6 +21,7 @@ rank_sales as (
  )
  select *  from rank_sales
  where ranking <=5
+ 
 
  --3.find month over month growth comparison for 2022 and 2023 sales eg : jan 2022 vs jan 2023
 
@@ -32,8 +36,10 @@ from
 cte
 group by order_month
 order by order_month 
+ 
 
 --4.for each category which month had highest sales 
+ 
 
 with cat_month_sales as(
 select category, format(order_date,'yyyyMM') as order_year_month, sum(sale_price) as sales_total
