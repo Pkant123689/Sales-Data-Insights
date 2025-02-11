@@ -54,7 +54,7 @@ select * from rank_sales
 where ranking = 1
 
 
---5. which sub category had highest growth by profit in 2023 compare to 2022
+--5. which sub category had highest growth by sales in 2023 compare to 2022
 
  with cte as (
 select sub_category,year(order_date) as order_year,
